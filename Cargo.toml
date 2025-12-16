@@ -14,8 +14,7 @@ name = "bench"
 path = "src/bench.rs"
 
 [dependencies]
-jagua-rs = { features = ["spp"], git = "https://github.com/JeroenGar/jagua-rs.git", rev = "b85d9268e46f4273b673325b172caee7b6116583"}
-#jagua-rs = { features = ["spp"], path = "../jagua-rs/jagua-rs" }
+jagua-rs = { features = ["spp"], git = "https://github.com/patissonlabs/jagua-rs.git", rev = "a105f485eccf6d77998a87f472b440c7e4049382"}
 rand = "0.9"
 rand_distr = "0.5"
 svg = "0.18"
@@ -39,6 +38,7 @@ ndarray = "0.17"
 rand_xoshiro = "0.7"
 
 getrandom = { version = "0.3", features = ["wasm_js"] }
+ts-rs = { version = "11.1.0", optional = true }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 ctrlc = "3.4"
@@ -47,6 +47,7 @@ ctrlc = "3.4"
 live_svg = []
 only_final_svg = []
 simd = []
+bindings = ["dep:ts-rs"]
 
 [profile.dev]
 overflow-checks = true

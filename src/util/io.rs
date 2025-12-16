@@ -10,6 +10,9 @@ use clap::Parser;
 use jagua_rs::probs::spp::io::ext_repr::{ExtSPInstance, ExtSPSolution};
 use crate::EPOCH;
 
+#[cfg(feature = "bindings")]
+use ts_rs::TS;
+
 #[derive(Parser)]
 pub struct MainCli {
     /// Path to input file (mandatory)
@@ -37,6 +40,7 @@ pub struct MainCli {
 }
 
 #[derive(Serialize, Deserialize, Clone)]
+#[cfg_attr(feature = "bindings", derive(TS),  ts(export))]
 pub struct SPOutput {
     #[serde(flatten)]
     pub instance: ExtSPInstance,
